@@ -1,54 +1,54 @@
-const Task = require("../model/taskModel");
+const User = require("../model/taskModel");
 
-//create(post) task
+//create(post) user
 
-const createTask = async (req, res) => {
+const createUser = async (req, res) => {
     try {
-        const task = await Task.create(req.body);
-      res.status(200).json(task)
+        const user = await User.create(req.body);
+      res.status(200).json(user)
     } catch (error) {
       res.status(500).json({msg: error.message})
     }
 };
 
-//get task
+//get user
 
-const getTask = async (req, res) => {
+const getUser = async (req, res) => {
     try {
         const {id} = req.params;
-        const task = await Task.findById(id);
-        if(!task){
-        return res.status(404).json(`No se encontro Tarea con id:${id}`);
+        const user = await User.findById(id);
+        if(!user){
+        return res.status(404).json(`No se encontro User con id:${id}`);
         }
-        res.status(200).json(task);
+        res.status(200).json(user);
       } catch (error) {
         res.status(500).json({msg: error.message});
       }
 };
 
 
-//get tasks
+//get users
 
-const getTasks = async (req, res) => {
+const getUsers = async (req, res) => {
     try {
-        const tasks = await Task.find();
-        res.status(200).json(tasks);
+        const users = await User.find();
+        res.status(200).json(users);
       } catch (error) {
         res.status(500).json({msg: error.message});
       }
 };
 
 
-//delete task
+//delete user
 
-const deleteTask = async (req, res) => {
+const deleteUser = async (req, res) => {
     try {
         const {id} = req.params;
-        const task = await Task.findByIdAndDelete(id);
-        if(!task){
-        return res.status(404).json(`No se encontro Tarea con id:${id}`);
+        const user = await User.findByIdAndDelete(id);
+        if(!user){
+        return res.status(404).json(`No se encontro User con id:${id}`);
         }
-        res.status(200).json(task);
+        res.status(200).json(user);
       } catch (error) {
         res.status(500).json({msg: error.message});
       }
@@ -56,21 +56,21 @@ const deleteTask = async (req, res) => {
 
 //update task
 
-const updateTask = async (req, res) => {
+const updateUser = async (req, res) => {
     try {
         const {id} = req.params;
-        const task = await Task.findByIdAndUpdate(
+        const user = await User.findByIdAndUpdate(
             {_id: id}, req.body, {new: true, runValidators: true, });
-        res.status(200).json(task);
+        res.status(200).json(user);
       } catch (error) {
         res.status(500).json({msg: error.message});
       }
 };
 
 module.exports = {
-    createTask,
-    getTasks,
-    getTask,
-    deleteTask,
-    updateTask
+    createUser,
+    getUsers,
+    getUser,
+    deleteUser,
+    updateUser
 };
