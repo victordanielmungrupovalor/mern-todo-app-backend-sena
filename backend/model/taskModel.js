@@ -1,14 +1,13 @@
 const mongoose = require("mongoose");
 
-const taskSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Porfavor añade una tarea"],
+    required: [true, "Porfavor añade un correo"],
   },
-  completed: {
-    type: Boolean,
-    required: true,
-    default: false,
+  password: {
+    type: String,
+    required: [true, "Porfavor añade un correo"],
   },
 },
 {
@@ -16,6 +15,6 @@ const taskSchema = mongoose.Schema({
 }
 );
 
-const Task = mongoose.model("Task", taskSchema);
+const Task = mongoose.model("Usuario", userSchema);
 
-module.exports = Task;
+module.exports = User;
