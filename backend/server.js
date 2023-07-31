@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors({
   origin: ["http://localhost:3000", "https://mern-todo-app-ytpf.onrender.com" ]
 }));
-app.use("/api/tasks", taskRoutes);
+app.use("/api/usuarios", taskRoutes);
 
 // Routes (rutas)
 app.get("/", (req, res) => {
